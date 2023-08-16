@@ -1,9 +1,11 @@
 {
-  "name": "timepicker",
-  "version": "1.0.0",
+  "name": "fresh-timepicker",
+  "version": "1.0.1",
   "description": "",
   "main": "timepicker.js",
   "scripts": {
+    "dev": "webpack --config=Scripts/config/webpack.dev.js --watch",
+    "build": "webpack --config=Scripts/config/webpack.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -14,7 +16,7 @@
     "timepicker"
   ],
   "author": "Andrea Zorzi",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/andreazorzi/Timepicker/issues"
   },
