@@ -1,7 +1,7 @@
 {
   "name": "@andreazorzi/timepicker",
-  "version": "1.0.1",
-  "description": "",
+  "version": "1.0.2",
+  "description": "Lightweight timepicker selector plugin, useful to avoid ugly default browser timepicker.",
   "main": "timepicker.js",
   "scripts": {
     "dev": "webpack --config=Scripts/config/webpack.dev.js --watch",
@@ -15,7 +15,7 @@
   "keywords": [
     "timepicker"
   ],
-  "author": "Andrea Zorzi",
+  "author": "Andrea Zorzi <info@zorziandrea.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/andreazorzi/Timepicker/issues"
