@@ -1,14 +1,16 @@
 .timepicker-selectors{
 	display: none;
 	background-color: white;
-    border-radius: var(--bs-border-radius);
-	border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: 0.375rem;
+	border: 1px solid #dee2e6;
+    padding: 10px;
     padding-top: 5px;
-    padding-bottom: 10px;
     margin-top: 5px;
     position: absolute;
     width: calc(100% - 10px);
     max-width: 250px;
+    margin-right: auto;
+    margin-left: auto;
 	
 	&:before{
 		content: "";
@@ -24,5 +26,20 @@
 	
 	&.show{
 		display: block;
+	}
+	
+	& .timepicker-row{
+		display: flex;
+    	width: 100%;
+		
+		& .timepicker-col{
+			flex: 1 0 0%;
+			
+			&:nth-child(2){
+				flex: 0 0 auto;
+				width: auto;
+				padding: 7px;
+			}
+		}
 	}
 }

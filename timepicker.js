@@ -30,7 +30,7 @@ export default class Timepicker{
 		}
 		
 		this.#element = element;
-		this.#container = this.#element.closest(".fresh-timepicker");
+		this.#container = this.#element.closest(".timepicker");
 		this.#options = { ...this.#options, ...options };
 		
 		this.#init();
@@ -108,22 +108,20 @@ export default class Timepicker{
 	
 	#getSelectors(){
 		return `
-			<div class="timepicker-selectors container">
-				<div class="row">
-					<div class="col">Hours</div>
-					<div class="col-auto px-0"></div>
-					<div class="col">Minutes</div>
+			<div class="timepicker-selectors container-fluid">
+				<div class="timepicker-row">
 					<div class="timepicker-col">${this.#options.lang.hours}</div>
+					<div class="timepicker-col"></div>
 					<div class="timepicker-col">${this.#options.lang.minutes}</div>
 				</div>
-				<div class="row">
-					<div class="timepicker-hours col">
+				<div class="timepicker-row">
+					<div class="timepicker-hours timepicker-col">
 						${this.#generateSelect("hours", 0, 23, 1, this.#options.selected.hour)}
 					</div>
-					<div class="col-auto pt-2 px-0">
+					<div class="timepicker-col">
 						:
 					</div>
-					<div class="timepicker-minutes col">
+					<div class="timepicker-minutes timepicker-col">
 						${this.#generateSelect("minutes", 0, 59, 5, this.#options.selected.minute)}
 					</div>
 				</div>
