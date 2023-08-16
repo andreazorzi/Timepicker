@@ -35,7 +35,7 @@ window.timepicker_it = timepicker_it;
 ```
 
 ## Options List
-```json
+```
 {
     disabled: true, // set the field to readonly
 	selected:{
