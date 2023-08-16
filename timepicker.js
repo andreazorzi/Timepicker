@@ -5,6 +5,10 @@
  * Date: 2023-01-11
  */
 export class Timepicker{
+
+import default_lang from "@andreazorzi/timepicker/locale/it.js";
+window.default_lang = default_lang;
+
 	#element = null;
 	#container = null;
 	#selectors = null;
@@ -13,7 +17,8 @@ export class Timepicker{
 		selected:{
 			hour: -1,
 			minute: -1
-		}
+		},
+		lang: default_lang
 	}
 	
 	constructor(element_selector, options){
@@ -108,6 +113,8 @@ export class Timepicker{
 					<div class="col">Hours</div>
 					<div class="col-auto px-0"></div>
 					<div class="col">Minutes</div>
+					<div class="timepicker-col">${this.#options.lang.hours}</div>
+					<div class="timepicker-col">${this.#options.lang.minutes}</div>
 				</div>
 				<div class="row">
 					<div class="timepicker-hours col">
