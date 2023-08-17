@@ -110,10 +110,8 @@ export default class Timepicker{
 	#setSelectorHours(){
 		let time = this.#element.value.split(":");
 		
-		console.log(time);
-		
-		this.#container.querySelector(".timepicker-hours select").value = time[0];
-		this.#container.querySelector(".timepicker-minutes select").value = time[1] ?? "";
+		this.#container.querySelector(".timepicker-hours select").value = parseInt(time[0]);
+		this.#container.querySelector(".timepicker-minutes select").value = parseInt(time[1] ?? "");
 	}
 	
 	element(){
