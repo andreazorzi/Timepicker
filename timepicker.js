@@ -56,7 +56,7 @@ export default class Timepicker{
 		})
 		
 		// Set initial values
-		this.setHours();
+		this.setHours(null, true);
 	}
 	
 	#checkOutsideClick(e){
@@ -93,13 +93,27 @@ export default class Timepicker{
 		return this.#container.querySelector(".timepicker-minutes select").value;
 	}
 	
-	setHours(){
+	setHours(e, init = false){
 		let hour = this.getHour();
 		let minute = this.getMinute();
 		
 		let time = hour == "" || minute == "" ? "" : `${hour < 10 ? "0" + hour : hour}:${minute < 10 ? "0" + minute : minute}`;
 		
+		if(init && this.#element.value != time){
+			time = this.#element.value;
+			this.#setSelectorHours();
+		}
+		
 		this.#element.value = time;
+	}
+	
+	#setSelectorHours(){
+		let time = this.#element.value.split(":");
+		
+		console.log(time);
+		
+		this.#container.querySelector(".timepicker-hours select").value = time[0];
+		this.#container.querySelector(".timepicker-minutes select").value = time[1] ?? "";
 	}
 	
 	element(){
