@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Timepicker Test</title>
+		<link rel="stylesheet" href="timepicker.css">
+	</head>
+	<body>
+		<div class="timepicker">
+			<input type="text" id="time" value="10:15">
+		</div>
+		
+		<script type="module">
+			import Timepicker from './timepicker.js';
+			
+			let timepicker = new Timepicker("#time");
+		</script>
+	</body>
+</html>
