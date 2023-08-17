@@ -102,7 +102,7 @@ export default class Timepicker{
 		
 		let time = hour == "" || minute == "" ? "" : `${hour < 10 ? "0" + hour : hour}:${minute < 10 ? "0" + minute : minute}`;
 		
-		if(init && this.#element.value != time){
+		if(init && this.#element.value != ""){
 			time = this.#element.value;
 			this.#setSelectorHours();
 		}
