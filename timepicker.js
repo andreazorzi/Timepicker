@@ -5,7 +5,7 @@
  * Date: 2023-01-11
  */
 
-import default_lang from "@andreazorzi/timepicker/locale/it.js";
+import default_lang from "./locale/it.js";
 window.default_lang = default_lang;
 
 export default class Timepicker{
