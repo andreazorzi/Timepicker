@@ -1,8 +1,11 @@
 /*!
  * Timepicker
  * https://github.com/andreazorzi/Timepicker
- *
- * Date: 2023-01-11
+ * 
+ * Author: Andrea Zorzi <info@zorziandrea.com>
+ * License: MIT
+ * 
+ * Version: 1.0.3
  */
 
 import default_lang from "./locale/it.js";
