@@ -115,15 +115,6 @@ export default class Timepicker{
 		return this.#container.querySelector(".timepicker-ampm select").value
 	}
 	
-	#setHours(e, init = false){
-		if(init && this.#element.value != ""){
-			// time = this.#element.value;
-			this.#setSelectorHours();
-		}
-		
-		this.#element.value = this.getFormattedTime();
-	}
-	
 	getFormattedTime(){
 		let hour = this.getHour();
 		let minute = this.getMinute();
@@ -135,6 +126,15 @@ export default class Timepicker{
 		}
 		
 		return time;
+	}
+	
+	#setHours(e, init = false){
+		if(init && this.#element.value != ""){
+			// time = this.#element.value;
+			this.#setSelectorHours();
+		}
+		
+		this.#element.value = this.getFormattedTime();
 	}
 	
 	#setSelectorHours(){
