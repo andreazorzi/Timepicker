@@ -70,11 +70,11 @@ export default class Timepicker{
 		document.addEventListener("click", this.#checkOutsideClick.bind(this), false);
 		
 		this.#container.querySelectorAll('select').forEach(item => {
-			item.addEventListener('change', this.setHours.bind(this));
+			item.addEventListener('change', this.#setHours.bind(this));
 		})
 		
 		// Set initial values
-		this.setHours(null, true);
+		this.#setHours(null, true);
 	}
 	
 	#checkOutsideClick(e){
@@ -115,7 +115,7 @@ export default class Timepicker{
 		return this.#container.querySelector(".timepicker-ampm select").value
 	}
 	
-	setHours(e, init = false){
+	#setHours(e, init = false){
 		if(init && this.#element.value != ""){
 			// time = this.#element.value;
 			this.#setSelectorHours();
