@@ -42,6 +42,28 @@ window.timepicker_it = timepicker_it;
 	    hour: -1,  // sets hours and minutes default value,
 	    minute: -1 // if the value is -1, the field value will be empty
 	}
-    lang: default_lang // an array of translated texts, default locale: it
+    lang: default_lang, // an array of translated texts, default locale: it
+	am_pm: false // set AM / PM mode
 }
+```
+
+## Methods
+```js
+// Open the modal
+open()
+
+// Close the modal
+close()
+
+// Get the current hour value
+getHour()
+
+// Get the current minute value
+getMinute()
+
+// Get the current am /pm selector value
+getAmPm()
+
+// Get current formatted time value
+getFormattedTime()
 ```
