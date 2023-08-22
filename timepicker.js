@@ -38,13 +38,18 @@ export default class Timepicker{
 		}
 		
 		this.#element = element;
-		this.#container = this.#element.closest(".timepicker");
 		this.#options = { ...this.#options, ...options };
 		
 		this.#init();
 	}
 	
 	#init(){
+		// Wrap element
+        this.#container = document.createElement("div");
+        this.#container.classList.add("timepicker");
+        this.#element.parentNode.insertBefore(this.#container, this.#element);
+        this.#container.appendChild(this.#element);
+		
 		// Configurations
 		this.#element.readOnly = this.#options.disabled;
 		
