@@ -126,7 +126,7 @@ export default class Timepicker{
 		
 		let time = hour == "" || minute == "" ? "" : `${hour < 10 ? "0" + hour : hour}:${minute < 10 ? "0" + minute : minute}`;
 		
-		if(this.#options.am_pm){
+		if(this.#options.am_pm && time != ""){
 			time += " " + this.getAmPm();
 		}
 		
