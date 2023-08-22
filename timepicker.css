@@ -15,6 +15,7 @@
     max-width: 300px;
     margin-right: auto;
     margin-left: auto;
+	table-layout : fixed;
 	z-index: 9999;
 	
 	&:before{
@@ -33,10 +34,22 @@
 		display: table;
 	}
 	
+	& thead{
+		& td:nth-child(2){
+			width: 2px;
+			padding: 3px;
+		}
+	}
+	
 	& tbody{
 		
 		& td{
 			text-align: center;
+			
+			&:nth-child(2){
+				padding: 0px;
+    			vertical-align: middle;
+			}
 			
 			& select{
 				width: 100%;
