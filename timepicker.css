@@ -8,7 +8,7 @@
     margin-top: 5px;
     position: absolute;
     width: calc(100% - 10px);
-    max-width: 250px;
+    max-width: 300px;
     margin-right: auto;
     margin-left: auto;
 	z-index: 9999;
@@ -26,20 +26,17 @@
 	}
 	
 	&.show{
-		display: block;
+		display: table;
 	}
 	
-	& .timepicker-row{
-		display: flex;
-    	width: 100%;
+	& tbody{
 		
-		& .timepicker-col{
-			flex: 1 0 0%;
+		& td{
+			text-align: center;
 			
-			&:nth-child(2){
-				flex: 0 0 auto;
-				width: auto;
-				padding: 7px;
+			& select{
+				width: 100%;
+				padding: 3px 5px;
 			}
 		}
 	}

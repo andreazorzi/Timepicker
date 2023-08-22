@@ -15,13 +15,18 @@ export default class Timepicker{
 	#element = null;
 	#container = null;
 	#selectors = null;
+	#hour_range = {
+		from: 0,
+		to: 23
+	}
 	#options = {
 		disabled: true,
 		selected:{
 			hour: -1,
 			minute: -1
 		},
-		lang: default_lang
+		lang: default_lang,
+		am_pm: false
 	}
 	
 	constructor(element_selector, options){
@@ -42,6 +47,11 @@ export default class Timepicker{
 	#init(){
 		// Configurations
 		this.#element.readOnly = this.#options.disabled;
+		
+		if(this.#options.am_pm){
+			this.#hour_range.from = 1;
+			this.#hour_range.to = 12;
+		}
 		
 		// Add selectors to container
 		this.#container.insertAdjacentHTML("beforeend", this.#getSelectors());
@@ -96,57 +106,89 @@ export default class Timepicker{
 		return this.#container.querySelector(".timepicker-minutes select").value;
 	}
 	
+	getAmPm(){
+		return this.#container.querySelector(".timepicker-ampm select").value
+	}
+	
 	setHours(e, init = false){
+		if(init && this.#element.value != ""){
+			// time = this.#element.value;
+			this.#setSelectorHours();
+		}
+		
+		this.#element.value = this.getFormattedTime();
+	}
+	
+	getFormattedTime(){
 		let hour = this.getHour();
 		let minute = this.getMinute();
 		
 		let time = hour == "" || minute == "" ? "" : `${hour < 10 ? "0" + hour : hour}:${minute < 10 ? "0" + minute : minute}`;
 		
-		if(init && this.#element.value != ""){
-			time = this.#element.value;
-			this.#setSelectorHours();
+		if(this.#options.am_pm){
+			time += " " + this.getAmPm();
 		}
 		
-		this.#element.value = time;
+		return time;
 	}
 	
 	#setSelectorHours(){
 		let time = this.#element.value.split(":");
+		let time2 = time[1].split(" ");
 		
-		this.#container.querySelector(".timepicker-hours select").value = parseInt(time[0]);
-		this.#container.querySelector(".timepicker-minutes select").value = parseInt(time[1] ?? "");
-	}
-	
-	element(){
-		return this.#element;
+		let hour = parseInt(time[0]);
+		let minutes = parseInt(time2[0] ?? "");
+		
+		this.#container.querySelector(".timepicker-hours select").value = hour;
+		this.#container.querySelector(".timepicker-minutes select").value = minutes;
+		
+		if(this.#options.am_pm){
+			let am_pm = time2[1] ?? this.getAmPm();
+			this.#container.querySelector(".timepicker-ampm select").value = am_pm;
+		}
 	}
 	
 	#getSelectors(){
 		return `
-			<div class="timepicker-selectors container-fluid">
-				<div class="timepicker-row">
-					<div class="timepicker-col">${this.#options.lang.hours}</div>
-					<div class="timepicker-col"></div>
-					<div class="timepicker-col">${this.#options.lang.minutes}</div>
-				</div>
-				<div class="timepicker-row">
-					<div class="timepicker-hours timepicker-col">
-						${this.#generateSelect("hours", 0, 23, 1, this.#options.selected.hour)}
-					</div>
-					<div class="timepicker-col">
-						:
-					</div>
-					<div class="timepicker-minutes timepicker-col">
-						${this.#generateSelect("minutes", 0, 59, 5, this.#options.selected.minute)}
-					</div>
-				</div>
-			</div>
+			<table class="timepicker-selectors container-fluid">
+				<thead>
+					<tr>
+						<td>${this.#options.lang.hours}</td>
+						<td></td>
+						<td>${this.#options.lang.minutes}</td>
+						<td></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="timepicker-hours">
+							${this.#generateSelect("hours", this.#hour_range.from, this.#hour_range.to, 1, this.#options.selected.hour)}
+						</td>
+						<td>
+							:
+						</td>
+						<td class="timepicker-minutes">
+							${this.#generateSelect("minutes", 0, 59, 5, this.#options.selected.minute)}
+						</td>
+						`+(
+							this.#options.am_pm ? `
+								<td class="timepicker-ampm">
+									<select id="ampm" class="form-select">
+										<option>AM</option>
+										<option>PM</option>
+									</select>
+								</td>
+							` : ""
+						)+`
+					</tr>
+				</tbody>
+			</table>
 		`;
 	}
 	
 	#generateSelect(id, min, max, step = 1, selected = 0){
 		let select = `
-			<select id="${id}" class="form-select">
+			<select class="${id} form-select">
 				<option value="">--</option>
 		`;
 		

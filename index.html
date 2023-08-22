@@ -14,7 +14,9 @@
 		<script type="module">
 			import Timepicker from './timepicker.js';
 			
-			let timepicker = new Timepicker("#time");
+			window.timepicker = new Timepicker("#time",{
+				am_pm: true
+			});
 		</script>
 	</body>
 </html>
