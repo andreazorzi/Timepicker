@@ -166,7 +166,7 @@ export default class Timepicker{
 						<td>${this.#options.lang.hours}</td>
 						<td></td>
 						<td>${this.#options.lang.minutes}</td>
-						<td></td>
+						`+(this.#options.am_pm ? `<td></td>` : "")+`
 					</tr>
 				</thead>
 				<tbody>
