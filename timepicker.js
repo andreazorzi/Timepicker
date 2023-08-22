@@ -26,7 +26,10 @@ export default class Timepicker{
 			minute: -1
 		},
 		lang: default_lang,
-		am_pm: false
+		am_pm: false,
+		custom_classes: {
+			selectors: "",
+		}
 	}
 	
 	constructor(element_selector, options){
@@ -49,6 +52,8 @@ export default class Timepicker{
         this.#container.classList.add("timepicker");
         this.#element.parentNode.insertBefore(this.#container, this.#element);
         this.#container.appendChild(this.#element);
+		
+		this.#element.classList.add("timepicker-input");
 		
 		// Configurations
 		this.#element.readOnly = this.#options.disabled;
@@ -155,7 +160,7 @@ export default class Timepicker{
 	
 	#getSelectors(){
 		return `
-			<table class="timepicker-selectors container-fluid">
+			<table class="timepicker-selectors container-fluid ${this.#options.custom_classes.selectors}">
 				<thead>
 					<tr>
 						<td>${this.#options.lang.hours}</td>

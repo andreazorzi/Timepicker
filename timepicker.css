@@ -1,3 +1,7 @@
+.timepicker-input{
+	cursor: pointer;
+}
+
 .timepicker-selectors{
 	display: none;
 	background-color: white;
