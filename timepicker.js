@@ -133,6 +133,11 @@ export default class Timepicker{
 		return time;
 	}
 	
+	setTime(time){
+		this.#element.value = time;
+		this.#setSelectorHours();
+	}
+	
 	#setHours(e, init = false){
 		if(init && this.#element.value != ""){
 			// time = this.#element.value;
