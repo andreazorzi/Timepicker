@@ -149,7 +149,7 @@ export default class Timepicker{
 	
 	#setSelectorHours(){
 		let time = this.#element.value.split(":");
-		let time2 = time[1].split(" ");
+		let time2 = (time[1] ?? "").split(" ");
 		
 		let hour = parseInt(time[0]);
 		let minutes = parseInt(time2[0] ?? "");
