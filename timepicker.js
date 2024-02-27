@@ -163,7 +163,21 @@ export default class Timepicker{
 		}
 	}
 	
+	#getInputTime(){
+		let time = this.#element.value.split(":");
+		let time2 = (time[1] ?? " ").split(" ");
+		let hour = parseInt(time[0]);
+		let minutes = parseInt(time2[0]);
+		
+		return {
+			hour: hour,
+			minute: minutes,
+			am_pm: time2[1]
+		}
+	}
+	
 	#getSelectors(){
+		let time = this.#getInputTime();
 		return `
 			<table class="timepicker-selectors container-fluid ${this.#options.custom_classes.selectors}">
 				<thead>
@@ -177,20 +191,20 @@ export default class Timepicker{
 				<tbody>
 					<tr>
 						<td class="timepicker-hours">
-							${this.#generateSelect("hours", this.#hour_range.from, this.#hour_range.to, 1, this.#options.selected.hour)}
+							${this.#generateSelect("hours", this.#hour_range.from, this.#hour_range.to, 1, time.hour)}
 						</td>
 						<td>
 							:
 						</td>
 						<td class="timepicker-minutes">
-							${this.#generateSelect("minutes", 0, 59, 5, this.#options.selected.minute)}
+							${this.#generateSelect("minutes", 0, 59, 5, time.minute)}
 						</td>
 						`+(
 							this.#options.am_pm ? `
 								<td class="timepicker-ampm">
 									<select id="ampm" class="form-select">
-										<option>AM</option>
-										<option>PM</option>
+										<option `+(time.am_pm == "AM" ? "selected" : "")+`>AM</option>
+										<option `+(time.am_pm == "PM" ? "selected" : "")+`>PM</option>
 									</select>
 								</td>
 							` : ""
@@ -209,6 +223,10 @@ export default class Timepicker{
 		
 		for(let i = min; i <= max; i += step){
 			select += `<option value="${i}" ${i == selected ? "selected" : ""}>${i < 10 ? "0" + i : i}</option>`;
+			
+			if(selected % step != 0 && i < selected && selected < i + step){
+				select += `<option value="${selected}" selected>${selected < 10 ? "0" + selected : selected}</option>`;
+			}
 		}
 		
 		select += '<select>';

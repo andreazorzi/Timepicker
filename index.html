@@ -7,13 +7,14 @@
 		<link rel="stylesheet" href="timepicker.css">
 	</head>
 	<body>
-		<input type="text" id="time" value="10:15">
+		<input type="text" id="time" value="10:17 PM">
 		
 		<script type="module">
 			import Timepicker from './timepicker.js';
 			
 			window.timepicker = new Timepicker("#time",{
-				// am_pm: true,
+				am_pm: true,
+				disabled: false,
 				custom_classes: {
 					selectors: "table",
 				}
