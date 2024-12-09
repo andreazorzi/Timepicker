@@ -229,7 +229,7 @@ export default class Timepicker{
 			}
 		}
 		
-		select += '<select>';
+		select += '</select>';
 		
 		return select;
 	}
