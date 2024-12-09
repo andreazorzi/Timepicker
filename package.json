@@ -1,6 +1,6 @@
 {
   "name": "@andreazorzi/timepicker",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Lightweight timepicker selector plugin, useful to avoid ugly default browser timepicker.",
   "main": "timepicker.js",
   "scripts": {
