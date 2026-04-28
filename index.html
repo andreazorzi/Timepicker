@@ -1,24 +1,24 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Timepicker Test</title>
-		<link rel="stylesheet" href="timepicker.css">
-	</head>
-	<body>
-		<input type="text" id="time" value="10:17 PM">
-		
-		<script type="module">
-			import Timepicker from './timepicker.js';
-			
-			window.timepicker = new Timepicker("#time",{
-				am_pm: true,
-				disabled: false,
-				custom_classes: {
-					selectors: "table",
-				}
-			});
-		</script>
-	</body>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Timepicker Test</title>
+        <link rel="stylesheet" href="timepicker.css">
+    </head>
+    <body>
+        <input type="text" id="time" name="time" value="10:17 PM">
+        
+        <script type="module">
+            import Timepicker from './timepicker.js';
+            
+            window.timepicker = new Timepicker("#time",{
+                am_pm: true,
+                disabled: false,
+                custom_classes: {
+                    selectors: "table",
+                }
+            });
+        </script>
+    </body>
 </html>
