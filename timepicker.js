@@ -159,10 +159,13 @@ export default class Timepicker{
     }
     
     #updateHiddenInput(){
+        if(this.getHour() === "" || this.getMinute() === ""){
+            this.#element.value = "";
+            return;
+        };
+        
         let hour = parseInt(this.getHour());
         let minute = parseInt(this.getMinute());
-        
-        if(hour === "" || minute === "") return "";
         
         if(this.#options.am_pm && this.getAmPm() == "PM" && hour < 12){
             hour += 12;
