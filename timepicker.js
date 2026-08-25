@@ -5,7 +5,7 @@
  * Author: Andrea Zorzi <info@zorziandrea.com>
  * License: MIT
  * 
- * Version: 1.0.8
+ * Version: 2.0.2
  */
 
 import default_lang from "./locale/it.js";
@@ -16,12 +16,12 @@ export default class Timepicker{
     #element = null;
     #container = null;
     #selectors = null;
-    #hour_range = {
-        from: 0,
-        to: 23
-    }
     #options = {
         disabled: true,
+        hour_range: {
+            from: 0,
+            to: 23
+        },
         selected:{
             hour: -1,
             minute: -1
@@ -68,8 +68,8 @@ export default class Timepicker{
         this.#placeholder.readOnly = this.#options.disabled;
         
         if(this.#options.am_pm){
-            this.#hour_range.from = 1;
-            this.#hour_range.to = 12;
+            this.#options.hour_range.from = 1;
+            this.#options.hour_range.to = 12;
         }
         
         // Add selectors to container
@@ -208,6 +208,9 @@ export default class Timepicker{
     
     #getSelectors(){
         let time = this.#getInputTime();
+        
+        console.log(this.#options.hour_range);
+        
         return `
             <table class="timepicker-selectors container-fluid ${this.#options.custom_classes.selectors}">
                 <thead>
@@ -221,7 +224,7 @@ export default class Timepicker{
                 <tbody>
                     <tr>
                         <td class="timepicker-hours">
-                            ${this.#generateSelect("hours", this.#hour_range.from, this.#hour_range.to, 1, time.hour)}
+                            ${this.#generateSelect("hours", this.#options.hour_range.from, this.#options.hour_range.to, 1, time.hour)}
                         </td>
                         <td>
                             :
