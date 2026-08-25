@@ -5,7 +5,7 @@
  * Author: Andrea Zorzi <info@zorziandrea.com>
  * License: MIT
  * 
- * Version: 2.0.2
+ * Version: 2.0.3
  */
 
 import default_lang from "./locale/it.js";
@@ -152,6 +152,13 @@ export default class Timepicker{
         if(init && this.#placeholder.value != ""){
             // time = this.#placeholder.value;
             this.#setSelectorHours();
+        }
+        
+        if(!init && this.getHour() != "" && this.getMinute() === ""){
+            this.#container.querySelector(".timepicker-minutes select").value = "0";
+        }
+        else if(!init && this.getHour() === "" && this.getMinute() != ""){
+            this.#container.querySelector(".timepicker-hours select").value = "10";
         }
         
         this.#placeholder.value = this.getFormattedTime();
